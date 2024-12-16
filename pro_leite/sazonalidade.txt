@@ -1,0 +1,32 @@
+A sazonalidade é a tendencia por periodo
+
+Prever os elementos com base nos registros 
+
+séries Temporais 
+
+Arima -  é  capaz de detctar elementos sazzonais ou de tendencia 
+
+
+
+Transformar dados importados em uma série temporel
+
+ts_data = pd.Series(data.iloc[:,0].values, index = pd.rate_range(
+
+              start= periodo, periodo=len(data). freq="M"))
+
+Decompor
+decomposicao = seasonal_decompose(ts_data, model="additive")
+
+
+Criar um modelo Arima
+modelo = SARIMAX(ts_data, order=(2,0,0), seasonal+order=(0,1,1,12))
+modelo_fit = modelo.fit()
+
+
+Fazer a previsão
+previsao = modelo_fit.forecast(steps=periodo_previsao)
+
+
+a lógica seria, importar os dados, tratar as colunas caso tenham uma das colunas com data, senão analisar o periodo inputado 
+e a serie importada servir como analise temporal 
+
